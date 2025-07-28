@@ -30,6 +30,8 @@ function App() {
       <h1 className="text-2xl font-bold mb-4">🔥 Firebase Chat Sample</h1>
       <div className="mb-4">    
       </div>
+      <input type="file" name="" placeholder="choose file"/>
+      <textarea name="box" id="">Gift area</textarea>
       <div>
         {messages.map((msg, i) => (
           <p key={i} className="border-b py-1">{msg.text}</p>
