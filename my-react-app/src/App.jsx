@@ -35,9 +35,7 @@ function App() {
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Enter message"
         />
-        <button onClick={sendMessage} className="bg-blue-500 text-white p-2">
-          Send
-        </button>
+    
       </div>
       <div>
         {messages.map((msg, i) => (
