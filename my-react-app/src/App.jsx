@@ -28,14 +28,7 @@ function App() {
   return (
     <div className="p-6 font-sans">
       <h1 className="text-2xl font-bold mb-4">🔥 Firebase Chat Sample</h1>
-      <div className="mb-4">
-        <input
-          className="border p-2 mr-2"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Enter message"
-        />
-    
+      <div className="mb-4">    
       </div>
       <div>
         {messages.map((msg, i) => (
