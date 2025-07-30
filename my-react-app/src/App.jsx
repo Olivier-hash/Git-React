@@ -6,12 +6,7 @@ function App() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const sendMessage = () => {
-    if (message.trim()) {
-      push(ref(database, "messages"), { text: message });
-      setMessage("");
-    }
-  };
+  
 
   useEffect(() => {
     const messagesRef = ref(database, "messages");
