@@ -4,7 +4,6 @@ import { database, ref, push, onValue } from "./firebase";
 
 function App() {
   
-
   useEffect(() => {
     const messagesRef = ref(database, "messages");
     onValue(messagesRef, (snapshot) => {
