@@ -6,14 +6,7 @@ function App() {
   
   useEffect(() => {
     const messagesRef = ref(database, "messages");
-    onValue(messagesRef, (snapshot) => {
-     
-      const loadedMessages = [];
-      for (let id in data) {
-        loadedMessages.push(data[id]);
-      }
-      setMessages(loadedMessages);
-    });
+    
   }, []);
 
   return (
