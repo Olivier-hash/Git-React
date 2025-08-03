@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="p-6 font-sans">
       <h1 className="text-4xl font-bold mb-4">🔥 Firebase Chat Sample</h1>
+      <p className="text-outline 0">input box for user</p>
       <div className="mb-4">    
       </div>
       <input type="file" name="" placeholder="choose file"/>
