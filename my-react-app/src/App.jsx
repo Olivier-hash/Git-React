@@ -17,6 +17,7 @@ function App() {
       </div>
       <input type="file" name="" placeholder="choose file"/>
       <textarea name="box" id="">Gift area</textarea>
+      <textarea name="" id="">Description</textarea>
       <div>
         {messages.map((msg, i) => (
           <p key={i} className="border-b py-5">{msg.text}</p>
