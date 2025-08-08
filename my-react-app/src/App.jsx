@@ -21,7 +21,7 @@ function App() {
       <textarea name="" id="">Description</textarea>
       <div>
         {messages.map((msg, i) => (
-          <p key={i} className="border-b py-5">{msg.text}</p>
+          <p key={i} className="border-b py-5 flex-2 ">{msg.text}</p>
         ))}
       </div>
       </div>
