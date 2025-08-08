@@ -12,7 +12,7 @@ function App() {
   return (
     
     <div className="p-6 font-sans">
-      <div className="container flex flex-cols-3">
+      <div className="container flex flex-cols-3 mb-6">
       <p className="text-outline 0">input box for user</p>
       <div className="mb-4">    
       </div>
