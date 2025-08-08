@@ -16,7 +16,7 @@ function App() {
       <p className="text-outline 0">input box for user</p>
       <div className="mb-4">    
       </div>
-      <input type="file" name="" placeholder="choose file"/>
+      <input type="text" name="" placeholder="choose file"/>
       <textarea name="box" id="">Gift area</textarea>
       <textarea name="" id="">Description</textarea>
       <div>
