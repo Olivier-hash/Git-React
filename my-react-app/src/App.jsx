@@ -17,7 +17,7 @@ function App() {
       <div className="mb-4">    
       </div>
       <input type="text" name="" placeholder="choose file"/>
-      <textarea name="box" id="">Gift area</textarea>
+      <textarea name="box uper-class" id="">Gift area</textarea>
       <textarea name="" id="">Description</textarea>
       <div>
         {messages.map((msg, i) => (
