@@ -1,99 +1,32 @@
-const express = require("express");
-const fetch = require("node-fetch");
-const redis = require("redis");
-
-
-client.on("error", (err) => console.error("Redis Client Error", err));
-client.connect();
-
-// Middleware: Check cache
-async function checkCache(req, res, next) {
-    const { username } = req.params;
-
-    try {
-        const data = await client.get(username);
-        if (data) {
-            console.log("Cache hit");
-            return res.json(JSON.parse(data));
-        } else {
-            console.log("Cache miss");
-            next();
-        }
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Server Error" });
-    }
-}
-
-// Route: Fetch GitHub user profile (example)
-app.get("/user/:username", checkCache, async (req, res) => {
-    const { username } = req.params;
-
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        const data = await response.json();
-
-        // Store in Redis with TTL = 1 hour
-        await client.setEx(username, 3600, JSON.stringify(data));
-
-        res.json(data);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Failed to fetch user data" });
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
-const express = require("express");
-const fetch = require("node-fetch");
-const redis = require("redis");
+// app.js
+const express = require('express');
+const { createClient } = require('redis');
+const { User } = require('./models');
 
 const app = express();
-const PORT = 5000;
+const redisClient = createClient();
 
+redisClient.on('error', (err) => console.error('Redis Error:', err));
 
-client.on("error", (err) => console.error("Redis Client Error", err));
-client.connect();
+(async () => {
+  await redisClient.connect();
+})();
 
-// Middleware: Check cache
-async function checkCache(req, res, next) {
-    const { username } = req.params;
-
-    try {
-        const data = await client.get(username);
-        if (data) {
-            console.log("Cache hit");
-            return res.json(JSON.parse(data));
-        } else {
-            console.log("Cache miss");
-            next();
-        }
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Server Error" });
-    }
+// Middleware to check cache
+async function cache(req, res, next) {
+  const data = await redisClient.get('users');
+  if (data) {
+    console.log('Serving from cache');
+    return res.json(JSON.parse(data));
+  }
+  next();
 }
 
-// Route: Fetch GitHub user profile (example)
-app.get("/user/:username", checkCache, async (req, res) => {
-    const { username } = req.params;
-
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        const data = await response.json();
-
-        // Store in Redis with TTL = 1 hour
-        await client.setEx(username, 3600, JSON.stringify(data));
-
-        res.json(data);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Failed to fetch user data" });
-    }
+app.get('/users', cache, async (req, res) => {
+  console.log('Fetching from DB...');
+  const users = await User.findAll();
+  await redisClient.setEx('users', 60, JSON.stringify(users)); // store for 60 sec
+  res.json(users);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(3000, () => console.log('Server running on port 3000'));
