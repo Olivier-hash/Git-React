@@ -1,7 +1,7 @@
 // app.js
 const express = require('express');
 const { createClient } = require('redis');
-const { User } = require('./models');
+
 
 const app = express();
 const redisClient = createClient();
