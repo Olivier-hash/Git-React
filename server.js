@@ -1,22 +1,29 @@
 // app.js
 const express = require('express');
+
 const { createClient } = require('redis');
 
 
 const app = express();
+
 const redisClient = createClient();
 
 redisClient.on('error', (err) => console.error('Redis Error:', err));
 
 (async () => {
+
   await redisClient.connect();
+
 })();
 
 
 
 app.get('/users', cache, async (req, res) => {
+
   console.log('Fetching from DB...');
+
   await redisClient.setEx('users', 60, JSON.stringify(users)); // store for 60 sec
+  
   res.json(users);
 });
 
