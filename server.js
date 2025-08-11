@@ -12,15 +12,7 @@ redisClient.on('error', (err) => console.error('Redis Error:', err));
   await redisClient.connect();
 })();
 
-// Middleware to check cache
-async function cache(req, res, next) {
-  const data = await redisClient.get('users');
-  if (data) {
-    console.log('Serving from cache');
-    return res.json(JSON.parse(data));
-  }
-  next();
-}
+
 
 app.get('/users', cache, async (req, res) => {
   console.log('Fetching from DB...');
