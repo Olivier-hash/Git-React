@@ -16,7 +16,6 @@ redisClient.on('error', (err) => console.error('Redis Error:', err));
 
 app.get('/users', cache, async (req, res) => {
   console.log('Fetching from DB...');
-  const users = await User.findAll();
   await redisClient.setEx('users', 60, JSON.stringify(users)); // store for 60 sec
   res.json(users);
 });
