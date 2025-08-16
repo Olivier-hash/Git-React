@@ -4,9 +4,7 @@ const express = require('express');
 const { createClient } = require('redis');
 
 
-const app = express();
 
-const redisClient = createClient();
 
 redisClient.on('error', (err) => console.error('Redis Error:', err));
 
