@@ -1,7 +1,7 @@
 // app.js
 const express = require('express');
 
-const { createClient } = require('redis');
+const { createClient,email } = require('redis');
 
 
 
