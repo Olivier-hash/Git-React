@@ -5,4 +5,4 @@ const { createClient,email} = require('redis');
 
 
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3200, () => console.log('Server running on port 3000'));
