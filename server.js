@@ -1,7 +1,7 @@
 // app.js
 const express = require('express');
 const store = require('main')
-const { createClient,email,git,} = require('redis');
+const { createClient,email} = require('redis');
 
 
 
