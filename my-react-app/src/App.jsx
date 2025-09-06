@@ -9,6 +9,7 @@ function App() {
       <div>
         <input type="text" className="p-5" />
         <p>Paragraphing</p>
+        <h1>Added headings</h1>
       </div>
     </div>
   );
