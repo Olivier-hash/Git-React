@@ -1,18 +1,7 @@
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-
-
-function App() {
-  return (
-    <div className="Head scroll">
-      <div>
-        <input type="text" className="p-5" />
-        <p>Paragraphing</p>
-        <h1>Added headings</h1>
-      </div>
-    </div>
-  );
+export function formatMessageTime(date) {
+  return new Date(date).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 }
-
-export default App;
