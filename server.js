@@ -3,7 +3,7 @@ import assets, { userDummyData } from '../assets/assets'
 import {useNavigate} from 'react-router-dom'
 
 
-function Sidebar({selectedUser, setSelectedUser}) {
+function Sidebar({setSelectedUser}) {
 
 const navigate = useNavigate();
 
