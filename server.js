@@ -11,7 +11,7 @@ const navigate = useNavigate();
     <div className={`bg-[#8185B2]/10 h-p-5  overflow-y-scroll text-white`}>
 
       <div className='pb-33334s'>
-        <div className='flex justify-between items-center'>
+        <div className='flex bord justify-between items-center'>
                    <div className='relative py-2 group'>
             <div className=' top-full right-0 z-20 w-32 p-5 rounded-md
             bg-[#282142] border border-gray-600 text-gray-100 hidden group-hover:block'> 
