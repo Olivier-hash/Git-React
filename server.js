@@ -8,7 +8,7 @@ function Sidebar({setSelectedUser}) {
 const navigate = useNavigate();
 
   return (
-    <div className={`bg-[#8185B2]/10 h-p-5 rounded-r-xl overflow-y-scroll text-white`}>
+    <div className={`bg-[#8185B2]/10 h-p-5  overflow-y-scroll text-white`}>
 
       <div className='pb-33334s'>
         <div className='flex justify-between items-center'>
